@@ -48,10 +48,13 @@ class LoginSetup(QWidget):
         # Set up the login functionality widgets
         self.username_widget = LineEditCombo('Username: ')
         self.username_widget.inp.setPlaceholderText('Username')
-        self.username_widget.lbl.setTextFormat
+
+        # Password widget
         self.password_widget = LineEditCombo('Password: ')
         self.password_widget.inp.setPlaceholderText('Password')
         self.password_widget.inp.setEchoMode(QLineEdit.Password)
+
+        # Login button
         self.login_button = QPushButton('Login', self.background_widget)
 
         # Add the widgets to Horizontal Layout 1

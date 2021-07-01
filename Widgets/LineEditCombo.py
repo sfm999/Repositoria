@@ -12,11 +12,12 @@ class LineEditCombo(QWidget):
         self.inp = QLineEdit()
 
         # Set the layout as HBox so the widgets go next to each other and not stacked on each other vertically
-        self.setLayout(QHBoxLayout())
+        layout = QFormLayout()
 
         # Add the widgets to the layout.
-        self.layout().addWidget(self.lbl)
-        self.layout().addWidget(self.inp)
+        layout.addRow(self.lbl, self.inp)
+
+        self.setLayout(layout)
 
         # Show the widget
         self.show()

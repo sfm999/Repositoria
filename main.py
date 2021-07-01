@@ -1,5 +1,6 @@
 from Widgets.LineEditCombo import LineEditCombo
 from Widgets.CreateUser import CreateUser
+from Widgets.LoginPage import LoginPage
 from resources.qt_resources.qt_widgets import *
 from resources.qt_resources.qt_core import *
 from db.controller.db import DB
@@ -23,21 +24,9 @@ class MainWindow(QWidget):
         self.stack = QStackedLayout()
 
         # Create login-page (page 0 of stack)
-        self.login_page = QWidget()
+        self.login_page = LoginPage()
         self.create_user_page = CreateUser()
         self.stack.insertWidget(1, self.create_user_page)
-        self.login_page.setGeometry(300, 300, 655, 451)
-        # Set login_page layout to vertical layout
-        self.login_page.setLayout(QVBoxLayout())
-
-        # Create the label/input combo widgets
-        self.username_widget = LineEditCombo('Username: ')
-        self.password_widget = LineEditCombo('Password: ')
-        self.password_widget.inp.setEchoMode(QLineEdit.Password)
-
-        # Add the widgets to the layout of the login_page
-        self.login_page.layout().addWidget(self.username_widget)
-        self.login_page.layout().addWidget(self.password_widget)
 
         # Add the login_page to the stack
         self.stack.insertWidget(0, self.login_page)
@@ -45,15 +34,6 @@ class MainWindow(QWidget):
         self.setLayout(self.stack)
         # Add the login_page widget to the stack
         self.stack.setCurrentIndex(0)
-
-        # Create the login and exit buttons
-        login_btn = QPushButton('Login')
-
-        # Add the buttons to the layout
-        self.login_page.layout().addWidget(login_btn)
-
-        # Setup up on click signal for logging in
-        login_btn.clicked.connect(self.login_clicked)
 
         # Set up the main page that login leads to
         self.main_page = QWidget()

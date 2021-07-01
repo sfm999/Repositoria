@@ -19,7 +19,7 @@ class DB:
 
     # Creates connection to the Database
     def create_connection(self):
-        path = 'my_db.db'
+        path = 'db/controller/my_db.db'
         con = None
         try:
             con = sqlite3.connect(path)
